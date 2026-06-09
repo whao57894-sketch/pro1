@@ -19,22 +19,22 @@ class LoginActivity : AppCompatActivity() {
             login()
         }
 
-        binding.textRegister.setOnClickListener {
+        binding.buttonRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 
     private fun login() {
-        val username = binding.editUsername.text.toString().trim()
+        val phone = binding.editPhone.text.toString().trim()
         val password = binding.editPassword.text.toString()
 
-        if (username.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "请输入账号和密码", Toast.LENGTH_SHORT).show()
+        if (phone.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "请输入手机号码和密码", Toast.LENGTH_SHORT).show()
             return
         }
 
         binding.buttonLogin.isEnabled = false
-        ApiClient.login(username, password) { result ->
+        ApiClient.login(phone, password) { result ->
             runOnUiThread {
                 binding.buttonLogin.isEnabled = true
 
@@ -42,6 +42,10 @@ class LoginActivity : AppCompatActivity() {
                     .onSuccess { apiResult ->
                         Toast.makeText(this, apiResult.message, Toast.LENGTH_SHORT).show()
                         if (apiResult.success) {
+                            getSharedPreferences("user_session", MODE_PRIVATE)
+                                .edit()
+                                .putString("phone", phone)
+                                .apply()
                             startActivity(Intent(this, MainActivity::class.java))
                             finish()
                         }

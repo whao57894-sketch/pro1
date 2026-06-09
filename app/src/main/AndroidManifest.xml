@@ -16,6 +16,14 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".EditProfileActivity"
+            android:exported="false"
+            android:label="@string/title_edit_profile" />
+        <activity
+            android:name=".BookkeepingEditActivity"
+            android:exported="false"
+            android:label="编辑记账" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="false"
             android:label="@string/title_register" />

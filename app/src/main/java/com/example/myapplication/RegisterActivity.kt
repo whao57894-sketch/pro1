@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityRegisterBinding
@@ -14,6 +15,12 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.spinnerGender.adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_dropdown_item,
+            listOf("男", "女")
+        )
+
         binding.buttonRegister.setOnClickListener {
             register()
         }
@@ -24,13 +31,21 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun register() {
-        val username = binding.editUsername.text.toString().trim()
-        val email = binding.editEmail.text.toString().trim()
+        val phone = binding.editPhone.text.toString().trim()
         val password = binding.editPassword.text.toString()
         val confirmPassword = binding.editConfirmPassword.text.toString()
+        val name = binding.editName.text.toString().trim()
+        val ageText = binding.editAge.text.toString().trim()
+        val occupation = binding.editOccupation.text.toString().trim()
+        val gender = binding.spinnerGender.selectedItem.toString()
 
-        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+        if (phone.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || name.isEmpty() || ageText.isEmpty() || occupation.isEmpty()) {
             Toast.makeText(this, "请完整填写注册信息", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (!phone.matches(Regex("^1\\d{10}$"))) {
+            Toast.makeText(this, "请输入正确的手机号码", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -39,8 +54,14 @@ class RegisterActivity : AppCompatActivity() {
             return
         }
 
+        val age = ageText.toIntOrNull()
+        if (age == null || age <= 0 || age > 120) {
+            Toast.makeText(this, "请输入正确的年龄", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         binding.buttonRegister.isEnabled = false
-        ApiClient.register(username, email, password, confirmPassword) { result ->
+        ApiClient.register(phone, password, confirmPassword, name, age, occupation, gender) { result ->
             runOnUiThread {
                 binding.buttonRegister.isEnabled = true
 

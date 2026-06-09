@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="记账"
+            android:text="编辑记账"
             android:textColor="#222222"
             android:textSize="28sp"
             android:textStyle="bold" />
@@ -34,7 +34,7 @@
             android:layout_height="54dp"
             android:layout_marginTop="14dp"
             android:background="#FFFFFF"
-            android:hint="类目，如工资收入、话费消费、股票收入"
+            android:hint="类目"
             android:inputType="text"
             android:paddingStart="16dp"
             android:paddingEnd="16dp" />
@@ -69,18 +69,11 @@
             android:padding="16dp" />
 
         <Button
-            android:id="@+id/button_upload_bill"
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginTop="18dp"
-            android:text="上传支付宝账单图片识别" />
-
-        <Button
             android:id="@+id/button_save_record"
             android:layout_width="match_parent"
             android:layout_height="54dp"
-            android:layout_marginTop="12dp"
-            android:text="保存记账"
+            android:layout_marginTop="18dp"
+            android:text="保存"
             android:textSize="17sp" />
     </LinearLayout>
 </ScrollView>
