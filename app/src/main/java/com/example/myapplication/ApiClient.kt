@@ -9,7 +9,7 @@ import java.net.URL
 
 object ApiClient {
 
-    private const val HOST = "http://172.24.27.137:8084/api"
+    private const val HOST = "http://127.0.0.1:8084/api"
     private const val USER_URL = "$HOST/user"
     private const val BOOKKEEPING_URL = "$HOST/bookkeeping"
 

@@ -35,6 +35,29 @@ android {
     }
 }
 
+tasks.register("reverseBackendPort") {
+    doLast {
+        def sdkDir = android.sdkDirectory
+        def adbName = org.gradle.internal.os.OperatingSystem.current().isWindows() ? "adb.exe" : "adb"
+        def adb = new File(new File(sdkDir, "platform-tools"), adbName)
+
+        if (!adb.exists()) {
+            logger.warn("adb not found at ${adb.absolutePath}; skip port reverse for backend api.")
+            return
+        }
+
+        exec {
+            executable adb.absolutePath
+            args "reverse", "tcp:8084", "tcp:8084"
+            ignoreExitValue true
+        }
+    }
+}
+
+tasks.matching { it.name == "preDebugBuild" }.configureEach {
+    dependsOn("reverseBackendPort")
+}
+
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.8.0'
