@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +19,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
+
+        <!-- FileProvider for sharing files -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
         <activity
             android:name=".EditProfileActivity"
             android:exported="false"
@@ -27,6 +43,26 @@
             android:name=".RegisterActivity"
             android:exported="false"
             android:label="@string/title_register" />
+        <activity
+            android:name=".BudgetActivity"
+            android:exported="false"
+            android:label="预算管理" />
+        <activity
+            android:name=".DebtActivity"
+            android:exported="false"
+            android:label="债务管理" />
+        <activity
+            android:name=".RecurringBillActivity"
+            android:exported="false"
+            android:label="周期账单" />
+        <activity
+            android:name=".AccountActivity"
+            android:exported="false"
+            android:label="账户管理" />
+        <activity
+            android:name=".YearlyReportActivity"
+            android:exported="false"
+            android:label="年度报告" />
         <activity
             android:name=".MainActivity"
             android:exported="false"

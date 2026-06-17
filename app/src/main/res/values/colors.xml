@@ -7,4 +7,42 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Custom App Colors -->
+    <color name="primary">#667EEA</color>
+    <color name="primary_dark">#5568D3</color>
+    <color name="primary_light">#8B9FEE</color>
+
+    <color name="income_green">#4CAF50</color>
+    <color name="income_green_light">#81C784</color>
+
+    <color name="expense_red">#FF5252</color>
+    <color name="expense_red_light">#FF8A80</color>
+
+    <color name="background">#F7F8FA</color>
+    <color name="card_background">#FFFFFF</color>
+
+    <color name="text_primary">#1A1A1A</color>
+    <color name="text_secondary">#666666</color>
+    <color name="text_hint">#999999</color>
+
+    <color name="divider">#E0E0E0</color>
+
+    <!-- Dark Theme Colors -->
+    <color name="dark_background">#121212</color>
+    <color name="dark_surface">#1E1E1E</color>
+    <color name="dark_surface_variant">#2C2C2C</color>
+    <color name="dark_text_primary">#E0E0E0</color>
+    <color name="dark_text_secondary">#A0A0A0</color>
+    <color name="dark_divider">#333333</color>
+
+    <!-- Category Colors -->
+    <color name="category_1">#FF6B6B</color>
+    <color name="category_2">#4ECDC4</color>
+    <color name="category_3">#45B7D1</color>
+    <color name="category_4">#FFA07A</color>
+    <color name="category_5">#98D8C8</color>
+    <color name="category_6">#F7DC6F</color>
+    <color name="category_7">#BB8FCE</color>
+    <color name="category_8">#85C1E2</color>
 </resources>
